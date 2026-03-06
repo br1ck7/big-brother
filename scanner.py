@@ -7,10 +7,13 @@ def scan_network(network_range):
     address_list = []
 
     for ip in network.hosts():
-        result = ping(str(ip))
-        if result:
-            print(f"{ip} responded in {result} seconds")
-            address_list.append(ip)
+        try:
+            result = ping(str(ip), timeout=2)
+            if result:
+                print(f"{ip} responded in {result} seconds")
+                address_list.append(ip)
+        except Exception as e:
+            print(f"Error pinging {ip}: {e}")
 
     return address_list
 
