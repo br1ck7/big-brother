@@ -1,6 +1,7 @@
 from scanner import scan_network
 from config import POLL_INTERVAL, NETWORK_RANGE, DATABASE_PATH
-import sqlite3, database, datetime
+import sqlite3, database, time
+from datetime import datetime
 
 def check_status(ip_address):
     conn = sqlite3.connect(DATABASE_PATH)
@@ -36,8 +37,9 @@ def poll_network():
             ip_address = str(device)
             status = "online" if check_status(ip_address) == "offline" else "offline"
             update_device(ip_address, status)
+            print(f"{ip_address} is {status}")
 
-        datetime.time.sleep(POLL_INTERVAL)
+        time.sleep(POLL_INTERVAL)
 
 if __name__ == "__main__":   
     poll_network()
