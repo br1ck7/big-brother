@@ -14,6 +14,6 @@ def scan_network(network_range):
 
     return address_list
 
-scan_result = scan_network(NETWORK_RANGE)
-
-print(scan_result)
+if __name__ == "__main__":
+    scan_result = scan_network(NETWORK_RANGE)
+    print(scan_result)
