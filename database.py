@@ -9,7 +9,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS devices (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             ip_address TEXT UNIQUE NOT NULL,
-            status TEXT DEFAULT 'unknown'
+            status TEXT DEFAULT 'unknown',
             last_seen TIMESTAMP,
             last_changed TIMESTAMP
         )
